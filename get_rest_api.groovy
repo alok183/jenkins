@@ -39,8 +39,10 @@ HostnameVerifier allHostsValid = new HostnameVerifier() {
 // Install the all-trusting host verifier
 HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
 // Prepare a variable where we save parsed JSON as a HashMap, it's good for our use case, as we just need the 'name' of each tag.
-def repo_response = [:]    
-def url = new  URL("http://<host>/rest/api/latest/projects/<proejct_name>/repos")
+def repo_response = [:]
+def url = new  URL("<rest_api_url>")
+/* exmaple
+def url = new  URL("http://bitbucket/rest/api/latest/projects/prod/repos")
 repo_response = new JsonSlurper().parseText(url.getText('UTF-8'))
 // println url.getText()
 println repo_response
@@ -55,4 +57,5 @@ repo_response.values.each { tag_metadata ->
 }
 
 println repo_list
+*/
 return repo_list.sort()
